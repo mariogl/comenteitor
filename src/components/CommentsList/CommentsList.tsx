@@ -1,31 +1,17 @@
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect, useState } from "react";
-import CommentsContext from "../../contexts/CommentsContext";
-import { IComment, ICommentsContext } from "../../types/interfaces";
+import { useEffect } from "react";
+import useApi from "../../hooks/useApi";
 import Comment from "../Comment/Comment";
 
 const CommentsList = (): JSX.Element => {
-  const { comments: commentsAPI } = useContext(
-    CommentsContext
-  ) as ICommentsContext;
-  const [comments, setComments] = useState<IComment[]>([]);
+  const { comments, loadComments } = useApi();
 
   useEffect(() => {
-    setComments(
-      commentsAPI.map((comment) => {
-        const url = new URL(comment.url);
-        return {
-          ...comment,
-          displayUrl: url.pathname.split("/")[2],
-        };
-      })
-    );
-  }, [commentsAPI]);
+    loadComments();
+  }, [loadComments]);
 
   return (
     <>
-      <p className="font-medium text-xl mb-4">
+      <p className="font-medium text-xl mb-6">
         {comments.length} pending comments
       </p>
       <ul className="comment-list">

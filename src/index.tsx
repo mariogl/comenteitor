@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import TimeAgo from "javascript-time-ago";
+import es from "javascript-time-ago/locale/es.json";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CommentsContextProvider from "./contexts/CommentsContextProvider";
+
+TimeAgo.addDefaultLocale(es);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

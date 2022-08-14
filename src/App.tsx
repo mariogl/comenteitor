@@ -1,4 +1,5 @@
 import CommentsList from "./components/CommentsList/CommentsList";
+import FormComment from "./components/FormComment/FormComment";
 
 const App = (): JSX.Element => {
   return (
@@ -10,6 +11,7 @@ const App = (): JSX.Element => {
       </header>
       <main className="main-content">
         <div className="container mx-auto p-4 border">
+          <FormComment />
           <CommentsList />
         </div>
       </main>
